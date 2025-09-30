@@ -44,24 +44,6 @@ public interface IAnimationManager
     void PlayEnemyWinAnimation(Animator animator);
 
     /// <summary>
-    /// Plays the death animation for the given enemy.
-    /// </summary>
-    /// <param name="animator"></param>
-    void PlayEnemyDeathAnimation(Animator animator);
-
-    /// <summary>
-    /// Plays the start animation for the given enemy.
-    /// </summary>
-    /// <param name="animator"></param>
-    void PlayEnemyStartAnimation(Animator animator);
-
-    /// <summary>
-    /// Plays the win animation for the given enemy.
-    /// </summary>
-    /// <param name="animator"></param>
-    void PlayEnemyWinAnimation(Animator animator);
-
-    /// <summary>
     /// Fires when the outro animation 
     /// </summary>
     event Action OutroEnded;

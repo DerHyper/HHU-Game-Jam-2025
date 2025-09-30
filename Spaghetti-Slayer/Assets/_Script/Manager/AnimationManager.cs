@@ -4,8 +4,8 @@ using UnityEngine.Playables;
 
 public class AnimationManager : IAnimationManager
 {
-    public event Action IntorEnded;
     public event Action OutroEnded;
+    public event Action IntroEnded;
 
     public void StartIntroAnimation()
     {
