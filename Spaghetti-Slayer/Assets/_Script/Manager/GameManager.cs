@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
       }
 
       ILevel level = _levelManager.NextLevel();
-      level.Start();
+      level.Start((GameObject go) => Instantiate(go), _animationManager);
       level.LevelEnded += NextLevel;
    }
 
