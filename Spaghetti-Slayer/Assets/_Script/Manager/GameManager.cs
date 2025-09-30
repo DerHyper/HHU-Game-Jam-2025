@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
    /// <summary>
    /// Current state of the game.
    /// </summary>
-   public GameState State { get; private set; } = GameState.Unstarted;
+   public GameState State { get; private set; } = GameState.UnStarted;
 
 
    #region Singleton
