@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
    {
       State = GameState.Intro;
 
-      _animationManager.IntorEnded += NextLevel;
+      _animationManager.IntroEnded += NextLevel;
       // Intro seq in start method
       // Animation manager start anmiation
       _animationManager.StartIntroAnimation();
