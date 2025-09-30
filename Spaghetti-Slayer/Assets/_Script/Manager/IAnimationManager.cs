@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 /// <summary>
 /// Each scene currently has three stages:
@@ -18,11 +19,28 @@ public interface IAnimationManager
     /// </summary>
     event Action IntorEnded;
 
-
     /// <summary>
     /// Starts the Outro animation of the current scene.
     /// </summary>
     void StartOutroAnimation();
+
+    /// <summary>
+    /// Plays the death animation for the given enemy.
+    /// </summary>
+    /// <param name="animator"></param>
+    void PlayEnemyDeathAnimation(Animator animator);
+
+    /// <summary>
+    /// Plays the start animation for the given enemy.
+    /// </summary>
+    /// <param name="animator"></param>
+    void PlayEnemyStartAnimation(Animator animator);
+
+    /// <summary>
+    /// Plays the win animation for the given enemy.
+    /// </summary>
+    /// <param name="animator"></param>
+    void PlayEnemyWinAnimation(Animator animator);
 
     /// <summary>
     /// Fiers when the outro animation 
