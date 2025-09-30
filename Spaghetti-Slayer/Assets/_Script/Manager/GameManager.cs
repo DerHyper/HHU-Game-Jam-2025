@@ -1,65 +1,79 @@
-
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Each scene currently has three stages:
-/// The Intor stage, in which an enemy is introduced.
-/// The Fight stage, in which the enemy is fought.
-/// The Outro stage, in which an outro of the enemy is played.
-/// </summary>
-public interface IAnimationManager
-{
-   /// <summary>
-   /// Starts the intor animation of the currenty scene.
-   /// </summary>
-   void StartIntroAnimation();
-
-   event Action IntorEnded;
-
-
-   /// <summary>
-   /// Starts the Outro animation of the current scene.
-   /// </summary>
-   void StartOutroAnimation();
-   event Action OutroEnded;
-}
 
 public class GameManager : MonoBehaviour
 {
-   [SerializeField]
-   private List<GameObject> _enemies;
-
-   [SerializeField]
-   private List<GameObject> _forks;
-
+   #region Managers
    private readonly IAnimationManager _animationManager;
-   private readonly IEnemyManager _enemyManager;
+   private readonly LevelManager _levelManager;
+   #endregion
+
+   /// <summary>
+   /// Current state of the game.
+   /// </summary>
+   public GameState State { get; private set; } = GameState.Unstarted;
 
 
+   #region Singleton
+   public static GameManager Instance;
+
+   private void Awake()
+   {
+      if (Instance != null && Instance != this)
+      {
+         Destroy(this);
+      }
+      else
+      {
+         Instance = this;
+      }
+   }
+   #endregion
+
+
+   /// <summary>
+   /// Is called on initialization.
+   /// Starts the Intro and registers a callback to start a level, for when the intro is finished.
+   /// </summary>
    public void Start()
    {
-      _animationManager.IntorEnded += Fight;
+      State = GameState.Intro;
+
+      _animationManager.IntorEnded += NextLevel;
       // Intro seq in start method
       // Animation manager start anmiation
       _animationManager.StartIntroAnimation();
    }
 
 
-   private void Fight()
+   /// <summary>
+   /// Starts the next level if there is still a level left, otherwise the outro is started which ends the game.
+   /// </summary>
+   private void NextLevel()
    {
-      // spawn first enemy
-      // enemy spawinind manager for that
-      // enemies deceid their own state (state as enum)
-      _enemyManager.SpawnEnemy(EnemyDied);
+      State = GameState.Level;
+
+      if (!_levelManager.HasNextLevel())
+      {
+         Outro();
+         return;
+      }
+
+      ILevel level = _levelManager.NextLevel();
+      level.Start();
+      level.LevelEnded += NextLevel;
    }
 
-   private void EnemyDied()
+   /// <summary>
+   /// Starts the end of the entire game.
+   /// </summary>
+   private void Outro()
    {
+      State = GameState.Outro;
+
       // Manager needs to know when it is over and got to the next state.
       // GameState that can be accessed from outside
-
       _animationManager.StartOutroAnimation();
    }
 }
+
