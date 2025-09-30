@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -6,10 +7,18 @@ using UnityEngine;
 /// </summary>
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _maxPoints;
-    [SerializeField] private float _currentPoints;
-    [SerializeField] private float _pointsPerSecond = 1f;
+    /// <summary>Is called before the enemy object is destroyed.</summary>
+    public event Action<Animator> OnDeath;
+    public event Action<Animator> OnStart;
+    /// <summary> Is called when the enemy wins. </summary>
+    public event Action<Animator> OnWin;
+    public event Action<float, float> OnPointsChanged;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private readonly float _maxPoints;
+    private float _currentPoints;
+    [SerializeField] private readonly float _pointsPerSecond = 1f;
     private const float CLICK_DAMAGE = 1f;
+    private bool _isDead = false;
 
     private void Start()
     {
@@ -18,37 +27,52 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (_isDead) return;
         AddPoints(_pointsPerSecond * Time.deltaTime);
-
-        if (_currentPoints <= 0)
-        {
-            Die();
-        }
-        else if (_currentPoints >= _maxPoints)
+        if (_currentPoints >= _maxPoints)
         {
             Win();
         }
     }
 
+    /// <summary>
+    /// Triggers the win event, which leads to the player's death.
+    /// </summary>
+    private void Win()
+    {
+        OnWin?.Invoke(_animator);
+    }
+
+    /// <summary>
+    /// Reduces the enemy's points by a fixed amount.
+    /// </summary>
     public void TakeDamage()
     {
         AddPoints(-CLICK_DAMAGE);
+        if (_currentPoints <= 0)
+        {
+            Die();
+        }
     }
 
+    /// <summary>
+    /// Triggers the death event, which leads to the enemy's death.
+    /// </summary>
+    private void Die()
+    {
+        OnDeath?.Invoke(_animator);
+        _isDead = true;
+    }
+
+    /// <summary>
+    /// Increases the enemy's points by the specified amount.
+    /// </summary>
+    /// <param name="points">Amount of points that will be added to the enemy</param>
     public void AddPoints(float points)
     {
         _currentPoints += points;
         _currentPoints = Mathf.Clamp(_currentPoints, 0, _maxPoints);
-    }
-
-    public void Die()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Win()
-    {
-        throw new System.NotImplementedException();
+        OnPointsChanged?.Invoke(_currentPoints, _maxPoints);
     }
 
     /// <summary>
@@ -57,6 +81,6 @@ public class Enemy : MonoBehaviour
     /// <returns>Float value between 0 and 1</returns>
     public float GetHealthPercentage()
     {
-        return _currentHealth / _maxHealth;
+        return _currentPoints / _maxPoints;
     }
 }
