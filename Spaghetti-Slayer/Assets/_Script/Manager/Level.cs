@@ -17,12 +17,13 @@ public class Level : ILevel
     [SerializeField]
     private readonly GameObject Fork;
 
-    public void Start(Func<GameObject, GameObject> instantiate, IAnimationManager animationManager)
+    public void Start(Func<GameObject, GameObject> instantiate, IAnimationManager animationManager, IUIManager uiManager)
     {
         GameObject instance = instantiate(Enemy);
         instance.GetComponent<Enemy>().OnStart += animationManager.PlayEnemyStartAnimation;
         instance.GetComponent<Enemy>().OnDeath += animationManager.PlayEnemyDeathAnimation;
         instance.GetComponent<Enemy>().OnWin += animationManager.PlayEnemyDeathAnimation;
+        instance.GetComponent<Enemy>().OnPointsChanged += uiManager.UpdateEnemyPointsUI;
     }
     public event Action LevelEnded;
 }

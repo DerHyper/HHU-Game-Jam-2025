@@ -8,7 +8,7 @@ public interface ILevel
     /// <summary>
     /// Starts the current level.
     /// </summary>
-    void Start(Func<UnityEngine.GameObject, UnityEngine.GameObject> instantiate, IAnimationManager animationManager);
+    void Start(Func<UnityEngine.GameObject, UnityEngine.GameObject> instantiate, IAnimationManager animationManager, IUIManager uiManager);
 
     /// <summary>
     /// Fiers when the level ends, which should trigger the start of the next level.

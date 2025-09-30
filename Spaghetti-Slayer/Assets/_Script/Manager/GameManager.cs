@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
    #region Managers
    private readonly IAnimationManager _animationManager;
+   private readonly IUIManager _uiManager;
    private readonly LevelManager _levelManager;
    #endregion
 
@@ -60,7 +61,7 @@ public class GameManager : MonoBehaviour
       }
 
       ILevel level = _levelManager.NextLevel();
-      level.Start((GameObject go) => Instantiate(go), _animationManager);
+      level.Start((GameObject go) => Instantiate(go), _animationManager, _uiManager);
       level.LevelEnded += NextLevel;
    }
 
