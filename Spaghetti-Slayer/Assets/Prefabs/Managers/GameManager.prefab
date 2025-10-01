@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2879568470668753385
+--- !u!1 &2866036187470136025
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,59 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2881043987073687379}
-  - component: {fileID: 8245140418023038803}
+  - component: {fileID: 3206406653125273852}
+  - component: {fileID: 5336400785206768623}
+  m_Layer: 0
+  m_Name: LevelTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3206406653125273852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2866036187470136025}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7814947815140953278}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5336400785206768623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2866036187470136025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _introText: []
+  _outroText: []
+  _enemy: {fileID: 6172293239551188133, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
+  _enemyTransform: {fileID: 0}
+  _enemyDeathSprite: {fileID: 0}
+  _fork: {fileID: 622165487992504756, guid: 6051497d52a49ed418e58f1895cce06a, type: 3}
+  _forkTransform: {fileID: 0}
+--- !u!1 &3238948762325976398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8601213802816895897}
+  - component: {fileID: 6783554086797833215}
   m_Layer: 0
   m_Name: LevelPudding
   m_TagString: Untagged
@@ -17,13 +68,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2881043987073687379
+--- !u!4 &8601213802816895897
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2879568470668753385}
+  m_GameObject: {fileID: 3238948762325976398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,23 +83,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7814947815140953278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8245140418023038803
+--- !u!114 &6783554086797833215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2879568470668753385}
+  m_GameObject: {fileID: 3238948762325976398}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _introText:
+  - HA! Was willst du denn?
+  - Du besitzt keine Macht hier, mit deiner Gabel.
+  - ICH BIN EIN PUDDING! *lacht diabolisch*
+  _outroText:
+  - "Das kann nicht sein \u2026"
+  - "Wie hast du \u2026 ? "
+  - "Du hattest nur eine Gabel \u2026 "
+  - "Es sollte nicht m\xF6glich sein."
   _enemy: {fileID: 9145577658379865430, guid: 1f10104cab349ae4ba6427be1137786f, type: 3}
   _enemyTransform: {fileID: 0}
+  _enemyDeathSprite: {fileID: 21300000, guid: d4fa72b30cb849840a14f270c2f46ee0, type: 3}
   _fork: {fileID: 4801133331171318574, guid: a610b5f1c2409bc4ea50e93230167fab, type: 3}
   _forkTransform: {fileID: 0}
---- !u!1 &4232440942207004034
+--- !u!1 &5038345334664335250
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,8 +117,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1822674021467513765}
-  - component: {fileID: 5273925872851330682}
+  - component: {fileID: 4956872592488265059}
+  - component: {fileID: 2536281751950209979}
   m_Layer: 0
   m_Name: LevelFSM
   m_TagString: Untagged
@@ -65,13 +126,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1822674021467513765
+--- !u!4 &4956872592488265059
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4232440942207004034}
+  m_GameObject: {fileID: 5038345334664335250}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -80,21 +141,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7814947815140953278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5273925872851330682
+--- !u!114 &2536281751950209979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4232440942207004034}
+  m_GameObject: {fileID: 5038345334664335250}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _introText:
+  - "*lacht h\xF6hnisch*"
+  _outroText:
+  - "Meine B\xE4llchen \u2026"
+  - "Nicht meine B\xE4llchen \u2026"
   _enemy: {fileID: 9145577658379865430, guid: de21188f01b2a6248b1076b716b873fb, type: 3}
   _enemyTransform: {fileID: 0}
+  _enemyDeathSprite: {fileID: 21300000, guid: a7627fa250526b84c809a6ef56730995, type: 3}
   _fork: {fileID: 4801133331171318574, guid: 88ed528d1d94f4f4e89d674c0de69a5f, type: 3}
+  _forkTransform: {fileID: 0}
+--- !u!1 &5366883420934929778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8093680923841019909}
+  - component: {fileID: 1445501105444922758}
+  m_Layer: 0
+  m_Name: LevelOlive
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8093680923841019909
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366883420934929778}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7814947815140953278}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1445501105444922758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366883420934929778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _introText:
+  - Oh hey!
+  - "Was ist gerade passiert? *g\xE4hnt* Gerade habe ich noch geschlafen. "
+  - "\u2026 Was hast du denn da in der Hand?"
+  - WARTE!
+  - "Du wirst doch nicht etwa \u2026 !?!"
+  _outroText:
+  - '*weint*'
+  _enemy: {fileID: 9145577658379865430, guid: 935742511e23cff4cb3425dab0df7242, type: 3}
+  _enemyTransform: {fileID: 0}
+  _enemyDeathSprite: {fileID: 21300000, guid: b4979e73243ea0d47a478dd024009504, type: 3}
+  _fork: {fileID: 4801133331171318574, guid: 57709c7a33273574ab392cac457ea195, type: 3}
   _forkTransform: {fileID: 0}
 --- !u!1 &5464158741842620686
 GameObject:
@@ -126,11 +250,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4443089997664554671}
-  - {fileID: 4994409930316059839}
-  - {fileID: 2881043987073687379}
-  - {fileID: 7779955596809764431}
-  - {fileID: 1822674021467513765}
+  - {fileID: 3206406653125273852}
+  - {fileID: 8093680923841019909}
+  - {fileID: 8601213802816895897}
+  - {fileID: 8625060594988613611}
+  - {fileID: 4956872592488265059}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &302173639996497754
@@ -146,15 +270,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level:
-  - {fileID: 6408644718326579117}
-  - {fileID: 2879568470668753385}
-  - {fileID: 8091607815991448818}
-  - {fileID: 4232440942207004034}
+  - {fileID: 5366883420934929778}
+  - {fileID: 3238948762325976398}
+  - {fileID: 5786908329135327572}
+  - {fileID: 5038345334664335250}
   _introMusic: {fileID: 8300000, guid: d51671bc9feac004dad78f9fbb043d49, type: 3}
   _introMusicVolume: 0.5
   _outroMusic: {fileID: 8300000, guid: 85a68c6039b12594a95513ef43f4b9c7, type: 3}
   _outroMusicVolume: 0.5
---- !u!1 &6263742619190983206
+--- !u!1 &5786908329135327572
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,104 +286,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4443089997664554671}
-  - component: {fileID: 5473905900766556280}
-  m_Layer: 0
-  m_Name: LevelTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4443089997664554671
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6263742619190983206}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7814947815140953278}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5473905900766556280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6263742619190983206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemy: {fileID: 6172293239551188133, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
-  _enemyTransform: {fileID: 0}
-  _fork: {fileID: 622165487992504756, guid: 6051497d52a49ed418e58f1895cce06a, type: 3}
-  _forkTransform: {fileID: 0}
---- !u!1 &6408644718326579117
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4994409930316059839}
-  - component: {fileID: 7468960998136478650}
-  m_Layer: 0
-  m_Name: LevelOlive
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4994409930316059839
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6408644718326579117}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7814947815140953278}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7468960998136478650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6408644718326579117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemy: {fileID: 9145577658379865430, guid: 935742511e23cff4cb3425dab0df7242, type: 3}
-  _enemyTransform: {fileID: 0}
-  _fork: {fileID: 4801133331171318574, guid: 57709c7a33273574ab392cac457ea195, type: 3}
-  _forkTransform: {fileID: 0}
---- !u!1 &8091607815991448818
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7779955596809764431}
-  - component: {fileID: 2096763139805422562}
+  - component: {fileID: 8625060594988613611}
+  - component: {fileID: 5419797713578072981}
   m_Layer: 0
   m_Name: LevelBread
   m_TagString: Untagged
@@ -267,13 +295,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7779955596809764431
+--- !u!4 &8625060594988613611
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8091607815991448818}
+  m_GameObject: {fileID: 5786908329135327572}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -282,19 +310,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7814947815140953278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2096763139805422562
+--- !u!114 &5419797713578072981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8091607815991448818}
+  m_GameObject: {fileID: 5786908329135327572}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _introText:
+  - Mist!
+  - 'Warum passiert sowas immer mir? '
+  - "Schicksal, wenn du mich h\xF6ren kannst - das ist deprimierend!"
+  _outroText:
+  - Warte!
+  - Ist es wirklich vorbei?
+  - "Mein Leben war die H\xF6lle."
+  - Danke.
   _enemy: {fileID: 9145577658379865430, guid: 4d05e430cab2f324094a6a7e83281815, type: 3}
   _enemyTransform: {fileID: 0}
+  _enemyDeathSprite: {fileID: 21300000, guid: 4d6cebc445773ad4a8b197f7529baee8, type: 3}
   _fork: {fileID: 4801133331171318574, guid: eea020687be7c9241a35c78417869dea, type: 3}
   _forkTransform: {fileID: 0}
