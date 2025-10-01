@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
    /// Checks wether there is still a level to play.
    /// </summary>
    /// <returns>True if there is still a level to play false otherwise.</returns>
-   public bool LevelHasNextLevel() => _currentLevel < _level.Count;
+   public bool LevelHasNextLevel() => _currentLevel < _level.Count - 1;
    /// <summary>
    /// Goes to the next level and returns that level.
    /// </summary>
