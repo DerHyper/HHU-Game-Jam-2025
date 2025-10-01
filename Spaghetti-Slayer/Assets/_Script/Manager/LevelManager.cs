@@ -26,14 +26,21 @@ public class LevelManager : MonoBehaviour, ILevel
     {
         _enemyInstance = Instantiate(_enemy, _enemyTransform);
         _forkInstance = Instantiate(_fork, _forkTransform);
+
+        DeactivateEnemy();
     }
+
 
     public void EnemyStart(Animator animator)
     {
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyStartAnimation(animator);
+    }
 
 
+    public void OnLevelIntroEnded()
+    {
+        ActivateEnemy();
     }
 
     public void EnemyPointsChanged(float currentPoints, float maxPoints)
@@ -44,25 +51,45 @@ public class LevelManager : MonoBehaviour, ILevel
 
     public void EnemyWin(Animator animator)
     {
-        Destroy(_enemyInstance);
-        Destroy(_forkInstance);
-
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyWinAnimation(animator);
+    }
 
+    public void OnEnemyWinAnimationEnded()
+    {
         DependencyManager.TryGet<IGameManager>(out var gameManager);
         gameManager.GameOver();
+
+        Destroy(_enemyInstance);
+        Destroy(_forkInstance);
     }
 
     public void EnemyDied(Animator animator)
     {
-        Destroy(_enemyInstance);
-        Destroy(_forkInstance);
-
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyDeathAnimation(animator);
+    }
 
+    public void OnEnemyDiedAnimationEnded()
+    {
         DependencyManager.TryGet<IGameManager>(out var gameManager);
         gameManager.LevelEnded();
+
+        Destroy(_enemyInstance);
+        Destroy(_forkInstance);
+    }
+
+    private void DeactivateEnemy()
+    {
+        _enemyInstance.gameObject.SetActive(false);
+        var hitpoint = _enemyInstance.GetComponentInChildren<Hitpoint>();
+        hitpoint.Deactivate();
+    }
+
+    private void ActivateEnemy()
+    {
+        _enemyInstance.gameObject.SetActive(true);
+        var hitpoint = _enemyInstance.GetComponentInChildren<Hitpoint>();
+        hitpoint.Activate();
     }
 }

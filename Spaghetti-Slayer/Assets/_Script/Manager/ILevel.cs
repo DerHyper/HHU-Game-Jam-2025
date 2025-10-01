@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Abstract level which is a phase in which our protagonist can fight an enemy.
 /// </summary>
-public interface ILevel : IEnemyLevelEvents
+public interface ILevel : IEnemyLevelEvents, ILevelAnimationsCallbacks
 {
     /// <summary>
     /// Starts the current level.
@@ -38,4 +38,11 @@ public interface IEnemyLevelEvents
     /// </summary>
     /// <param name="enemyAnimator">The enemy animator.</param>
     void EnemyDied(Animator animator);
+}
+
+public interface ILevelAnimationsCallbacks
+{
+    void OnLevelIntroEnded();
+    void OnEnemyWinAnimationEnded();
+    void OnEnemyDiedAnimationEnded();
 }
