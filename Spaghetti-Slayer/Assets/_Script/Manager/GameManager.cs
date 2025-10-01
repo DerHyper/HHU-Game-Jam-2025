@@ -14,7 +14,7 @@ public interface ILevelManager : IManager
    ILevel CurrentLevel { get; }
 }
 
-public class GameManager : MonoBehaviour, IGameManager
+public class GameManager : MonoBehaviour, IGameManager, ILevelManager
 {
    #region Managers
    private IAnimationManager _animationManager => DependencyManager.TryGet<IAnimationManager>(out var manager) ? manager : null;
@@ -52,14 +52,18 @@ public class GameManager : MonoBehaviour, IGameManager
    /// Is called on initialization.
    /// Starts the Intro and registers a callback to start a level, for when the intro is finished.
    /// </summary>
-   public void Start()
+   IEnumerator Start()
    {
       State = GameState.Intro;
 
-      _animationManager.IntroEnded += NextLevel;
       // Intro seq in start method
       // Animation manager start anmiation
-      _animationManager.StartIntroAnimation();
+      // var iter = _animationManager.StartIntroAnimation();
+      // while (iter.MoveNext()) { yield return null; }
+      // yield return null;
+
+      NextLevel();
+      yield break;
    }
 
    /// <summary>
@@ -105,7 +109,7 @@ public class GameManager : MonoBehaviour, IGameManager
    /// Manages all levels of the game.
    /// </summary>
    #region LevelContainer 
-   private static ushort _currentLevel = 0;
+   private static short _currentLevel = -1;
 
    /// <summary>
    /// Checks wether there is still a level to play.
@@ -116,7 +120,7 @@ public class GameManager : MonoBehaviour, IGameManager
    /// Goes to the next level and returns that level.
    /// </summary>
    /// <returns>The now current level.</returns>
-   public ILevel LevelNextLevel() => _level[_currentLevel++].GetComponent<ILevel>();
+   public ILevel LevelNextLevel() => _level[++_currentLevel].GetComponent<ILevel>();
    /// <summary>
    /// Returns the current level.
    /// </summary>
