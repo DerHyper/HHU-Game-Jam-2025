@@ -9,6 +9,12 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private float _maxPoints;
+    [SerializeField] private AudioClip _dmgSound;
+    [SerializeField] private AudioClip _dieSound;
+    [SerializeField] private AudioClip _music;
+    [SerializeField] private float _dieSoundVolume = 0.5f;
+    [SerializeField] private float _dmgSoundVolume = 0.5f;
+    [SerializeField] private float _musicVolume = 0.5f;
     private float _currentPoints;
     [SerializeField] private float _pointsPerSecond = 1f;
     private const float CLICK_DAMAGE = 1f;
@@ -18,6 +24,7 @@ public class Enemy : MonoBehaviour
     {
         _currentPoints = _maxPoints / 2f;
         CurrentLevel.EnemyStart(_animator);
+        AudioManager.Instance.PlayMusic(_music, _musicVolume);
     }
 
     private void Update()
@@ -26,6 +33,7 @@ public class Enemy : MonoBehaviour
         AddPoints(_pointsPerSecond * Time.deltaTime);
         if (_currentPoints >= _maxPoints)
         {
+            _isDead = true;
             Win();
         }
     }
@@ -43,6 +51,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void TakeDamage()
     {
+        AudioManager.Instance.PlayOncePitchedRandom(_dmgSound, _dmgSoundVolume);
         AddPoints(-CLICK_DAMAGE);
         if (_currentPoints <= 0)
         {
@@ -56,6 +65,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         CurrentLevel.EnemyDied(_animator);
+        AudioManager.Instance.PlayOnce(_dieSound, _dieSoundVolume);
         _isDead = true;
     }
 

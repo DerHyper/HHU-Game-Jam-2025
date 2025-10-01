@@ -47,7 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 5829752688725007133}
-  _maxPoints: 50
+  _maxPoints: 5
+  _dmgSound: {fileID: 0}
+  _dieSound: {fileID: 0}
+  _music: {fileID: 0}
+  _musicVolume: 0.5
   _pointsPerSecond: 1
 --- !u!1 &8276422220302844933
 GameObject:
