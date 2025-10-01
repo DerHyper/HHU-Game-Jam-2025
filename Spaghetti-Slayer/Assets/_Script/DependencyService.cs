@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -49,18 +50,17 @@ public class DependencyService : ScriptableObject
 
     private void Init()
     {
-        cache = new Dictionary<Type, object>();
+        cache = new();
         foreach (var entry in dependencies)
         {
-            if (entry.implementation == null) continue;
+            if (entry.implementation == null) { continue; }
 
-            var interfaces = entry.implementation.GetType().GetInterfaces();
-            foreach (var iface in interfaces)
+            foreach (var iface in entry.implementation.GetType()
+                                       .GetInterfaces()
+                                       .Where(type => type != typeof(IManager))
+                                       .Where(type => !cache.ContainsKey(type)))
             {
-                if (!cache.ContainsKey(iface))
-                {
-                    cache[iface] = entry.implementation;
-                }
+                cache[iface] = entry.implementation;
             }
         }
     }
