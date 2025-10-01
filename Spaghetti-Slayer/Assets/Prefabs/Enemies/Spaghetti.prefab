@@ -19,7 +19,7 @@ PrefabInstance:
     - target: {fileID: 36076626926742743, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
       propertyPath: _dmgSound
       value: 
-      objectReference: {fileID: 8300000, guid: 55402213c84fb1d48bf54e8ba3e362d9, type: 3}
+      objectReference: {fileID: 8300000, guid: 7d636502e9cd25d4897d78b08a57d03b, type: 3}
     - target: {fileID: 2896192780397868713, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
