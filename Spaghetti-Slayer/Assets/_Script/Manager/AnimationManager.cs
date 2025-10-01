@@ -3,17 +3,19 @@ using UnityEngine;
 
 public class AnimationManager : MonoBehaviour, IAnimationManager
 {
-    public event Action OutroEnded;
-    public event Action IntroEnded;
+
+    [SerializeField] private Animator _introAnimator;
+    [SerializeField] private Animator _outroAnimator;
+
 
     public void StartIntroAnimation()
     {
-        throw new NotImplementedException();
+        _introAnimator.SetTrigger("intro");
     }
 
     public void StartOutroAnimation()
     {
-        throw new NotImplementedException();
+        _introAnimator.SetTrigger("outro");
     }
 
     public void PlayEnemyDeathAnimation(Animator animator)
