@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour, IGameManager
    #region Managers
    private readonly IAnimationManager _animationManager;
    private readonly IUIManager _uiManager;
-   private readonly LevelStageContainer _levelManager;
+   private readonly LevelStageContainer _levelContainer;
    #endregion
 
    /// <summary>
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour, IGameManager
    /// <summary>
    /// The currently played level.
    /// </summary>
-   public ILevel CurrentLevel => _levelManager.CurrentLevel();
+   public ILevel CurrentLevel => _levelContainer.CurrentLevel();
 
    /// <summary>
    /// Starts the next level if there is still a level left, otherwise the outro is started which ends the game.
@@ -69,13 +69,13 @@ public class GameManager : MonoBehaviour, IGameManager
    {
       State = GameState.Level;
 
-      if (!_levelManager.HasNextLevel())
+      if (!_levelContainer.HasNextLevel())
       {
          Outro();
          return;
       }
 
-      ILevel level = _levelManager.NextLevel();
+      ILevel level = _levelContainer.NextLevel();
       level.Start(Instantiate);
    }
 
