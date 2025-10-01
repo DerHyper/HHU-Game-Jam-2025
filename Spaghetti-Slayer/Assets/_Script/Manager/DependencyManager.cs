@@ -30,6 +30,7 @@ public class DependencyManager : MonoBehaviour
         else
         {
             Instance = this;
+            Init();
         }
     }
     #endregion
@@ -38,7 +39,6 @@ public class DependencyManager : MonoBehaviour
 
     private Dictionary<Type, object> cache;
 
-    public void Start() => Init();
     private void Init()
     {
         if (cache != null) { return; }
