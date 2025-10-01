@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public interface IGameManager : IManager
@@ -15,9 +17,12 @@ public interface ILevelManager : IManager
 public class GameManager : MonoBehaviour, IGameManager
 {
    #region Managers
-   private readonly IAnimationManager _animationManager;
-   private readonly IUIManager _uiManager;
-   private readonly LevelStageContainer _levelContainer;
+   private IAnimationManager _animationManager => DependencyManager.TryGet<IAnimationManager>(out var manager) ? manager : null;
+   private IUIManager UiManager => DependencyManager.TryGet<IUIManager>(out var manager) ? manager : null;
+   /// <summary>
+   /// The levels playable in the game.
+   /// </summary>
+   [SerializeField] private List<GameObject> _level;
    #endregion
 
    /// <summary>
@@ -60,7 +65,7 @@ public class GameManager : MonoBehaviour, IGameManager
    /// <summary>
    /// The currently played level.
    /// </summary>
-   public ILevel CurrentLevel => _levelContainer.CurrentLevel();
+   public ILevel CurrentLevel => LevelCurrentLevel();
 
    /// <summary>
    /// Starts the next level if there is still a level left, otherwise the outro is started which ends the game.
@@ -69,13 +74,13 @@ public class GameManager : MonoBehaviour, IGameManager
    {
       State = GameState.Level;
 
-      if (!_levelContainer.HasNextLevel())
+      if (!LevelHasNextLevel())
       {
          Outro();
          return;
       }
 
-      ILevel level = _levelContainer.NextLevel();
+      ILevel level = LevelNextLevel();
       level.Start();
    }
 
@@ -94,5 +99,29 @@ public class GameManager : MonoBehaviour, IGameManager
       // GameState that can be accessed from outside
       _animationManager.StartOutroAnimation();
    }
+
+
+   /// <summary>
+   /// Manages all levels of the game.
+   /// </summary>
+   #region LevelContainer 
+   private static ushort _currentLevel = 0;
+
+   /// <summary>
+   /// Checks wether there is still a level to play.
+   /// </summary>
+   /// <returns>True if there is still a level to play false otherwise.</returns>
+   public bool LevelHasNextLevel() => _currentLevel < _level.Count;
+   /// <summary>
+   /// Goes to the next level and returns that level.
+   /// </summary>
+   /// <returns>The now current level.</returns>
+   public ILevel LevelNextLevel() => _level[_currentLevel++].GetComponent<ILevel>();
+   /// <summary>
+   /// Returns the current level.
+   /// </summary>
+   /// <returns>The current level.</returns>
+   public ILevel LevelCurrentLevel() => _level[_currentLevel].GetComponent<ILevel>();
+   #endregion
 }
 
