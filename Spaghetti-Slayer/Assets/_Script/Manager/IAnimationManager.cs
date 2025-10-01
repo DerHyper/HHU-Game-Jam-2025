@@ -39,6 +39,12 @@ public interface IAnimationManager : IManager
     /// </summary>
     /// <param name="animator"></param>
     void PlayEnemyWinAnimation(Animator animator);
+
+    /// <summary>
+    /// Plays the hit animation for the given fork.
+    /// </summary>
+    /// <param name="animator"></param>
+    public void HitFork(Animator animator);
 }
 
 

@@ -111,4 +111,10 @@ public class LevelManager : MonoBehaviour, ILevel
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyFightAnimation(_enemyInstance.GetComponent<Enemy>().Animator);
     }
+
+    public void MoveFork()
+    {
+        DependencyManager.TryGet<IAnimationManager>(out var animationManager);
+        animationManager.HitFork(_forkInstance.GetComponent<Animator>());
+    }
 }

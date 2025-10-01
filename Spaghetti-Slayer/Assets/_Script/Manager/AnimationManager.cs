@@ -37,4 +37,9 @@ public class AnimationManager : MonoBehaviour, IAnimationManager
     {
         animator.SetTrigger("intro");
     }
+
+    public void HitFork(Animator animator)
+    {
+        animator.SetTrigger("Hit");
+    }
 }

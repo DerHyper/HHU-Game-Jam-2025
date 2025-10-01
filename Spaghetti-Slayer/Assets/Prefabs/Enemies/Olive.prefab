@@ -20,6 +20,14 @@ PrefabInstance:
       propertyPath: _dmgSound
       value: 
       objectReference: {fileID: 8300000, guid: faa0694d3dd4e9f46bad81250bf9669c, type: 3}
+    - target: {fileID: 36076626926742743, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
+      propertyPath: _maxPoints
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 36076626926742743, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
+      propertyPath: _pointsPerSecond
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2896192780397868713, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
