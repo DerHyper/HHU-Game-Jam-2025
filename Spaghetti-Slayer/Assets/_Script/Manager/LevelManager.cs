@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -26,8 +27,6 @@ public class LevelManager : MonoBehaviour, ILevel
     {
         _enemyInstance = Instantiate(_enemy, _enemyTransform);
         _forkInstance = Instantiate(_fork, _forkTransform);
-
-        DeactivateEnemy();
     }
 
 
@@ -35,12 +34,14 @@ public class LevelManager : MonoBehaviour, ILevel
     {
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyStartAnimation(animator);
+
+        DeactivateEnemy();
     }
 
 
     public void OnLevelIntroEnded()
     {
-        ActivateEnemy();
+        EnemyFight();
     }
 
     public void EnemyPointsChanged(float currentPoints, float maxPoints)
@@ -81,15 +82,17 @@ public class LevelManager : MonoBehaviour, ILevel
 
     private void DeactivateEnemy()
     {
-        _enemyInstance.gameObject.SetActive(false);
-        var hitpoint = _enemyInstance.GetComponentInChildren<Hitpoint>();
-        hitpoint.Deactivate();
+        _enemyInstance.GetComponent<Enemy>().Intro();
     }
 
-    private void ActivateEnemy()
+    private void EnemyFight()
     {
-        _enemyInstance.gameObject.SetActive(true);
-        var hitpoint = _enemyInstance.GetComponentInChildren<Hitpoint>();
-        hitpoint.Activate();
+        if (_enemyInstance.TryGetComponent<Enemy>(out var enemy))
+        {
+            enemy.Fight();
+        }
+
+        DependencyManager.TryGet<IAnimationManager>(out var animationManager);
+        animationManager.PlayEnemyFightAnimation(_enemyInstance.GetComponent<Enemy>().Animator);
     }
 }

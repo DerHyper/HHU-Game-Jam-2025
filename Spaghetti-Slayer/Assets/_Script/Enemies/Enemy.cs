@@ -8,6 +8,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private Animator _enemyAnimator;
     [SerializeField] private float _maxPoints;
     [SerializeField] private AudioClip _dmgSound;
     [SerializeField] private AudioClip _dieSound;
@@ -19,17 +20,20 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _pointsPerSecond = 1f;
     private const float CLICK_DAMAGE = 1f;
     private bool _isDead = false;
+    private bool _isActive = false;
+
+    public Animator Animator => _enemyAnimator;
 
     private void Start()
     {
         _currentPoints = _maxPoints / 2f;
-        CurrentLevel.EnemyStart(_animator);
+        CurrentLevel.EnemyStart(_enemyAnimator);
         AudioManager.Instance.PlayMusic(_music, _musicVolume);
     }
 
     private void Update()
     {
-        if (_isDead) return;
+        if (!_isActive || _isDead) return;
         AddPoints(_pointsPerSecond * Time.deltaTime);
         if (_currentPoints >= _maxPoints)
         {
@@ -43,7 +47,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void Win()
     {
-        CurrentLevel.EnemyWin(_animator);
+        CurrentLevel.EnemyWin(_enemyAnimator);
     }
 
     /// <summary>
@@ -51,6 +55,8 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public void TakeDamage()
     {
+        if (!_isActive) { return; }
+
         AudioManager.Instance.PlayOncePitchedRandom(_dmgSound, _dmgSoundVolume);
         AddPoints(-CLICK_DAMAGE);
         if (_currentPoints <= 0)
@@ -64,7 +70,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void Die()
     {
-        CurrentLevel.EnemyDied(_animator);
+        CurrentLevel.EnemyDied(_enemyAnimator);
         AudioManager.Instance.PlayOnce(_dieSound, _dieSoundVolume);
         _isDead = true;
     }
@@ -87,6 +93,18 @@ public class Enemy : MonoBehaviour
     public float GetHealthPercentage()
     {
         return _currentPoints / _maxPoints;
+    }
+
+    public void Fight()
+    {
+        _isActive = true;
+        gameObject.GetComponentInChildren<Hitpoint>(true).Activate();
+    }
+
+    public void Intro()
+    {
+        _isActive = false;
+        gameObject.GetComponentInChildren<Hitpoint>(true).Deactivate();
     }
 
     private ILevel CurrentLevel => DependencyManager.TryGet<ILevelManager>(out var gameManager) ? gameManager.CurrentLevel : null;

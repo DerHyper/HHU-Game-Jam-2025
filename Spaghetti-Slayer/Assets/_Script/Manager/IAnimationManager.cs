@@ -19,6 +19,9 @@ public interface IAnimationManager : IManager
     /// </summary>
     void StartOutroAnimation();
 
+
+    void PlayEnemyFightAnimation(Animator animator);
+
     /// <summary>
     /// Plays the death animation for the given enemy.
     /// </summary>

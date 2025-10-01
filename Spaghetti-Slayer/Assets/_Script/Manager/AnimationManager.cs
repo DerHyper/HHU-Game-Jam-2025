@@ -18,18 +18,23 @@ public class AnimationManager : MonoBehaviour, IAnimationManager
         _outroAnimator.SetTrigger("outro");
     }
 
+    public void PlayEnemyFightAnimation(Animator animator)
+    {
+        animator.SetTrigger("fight");
+    }
+
     public void PlayEnemyDeathAnimation(Animator animator)
     {
-        animator.SetTrigger("Die");
+        animator.SetTrigger("died");
     }
 
     public void PlayEnemyWinAnimation(Animator animator)
     {
-        animator.SetTrigger("Win");
+        animator.SetTrigger("win");
     }
 
     public void PlayEnemyStartAnimation(Animator animator)
     {
-        animator.SetTrigger("Start");
+        animator.SetTrigger("intro");
     }
 }
