@@ -7,6 +7,7 @@ public interface IGameManager : IManager
 {
    void GameOver();
    void LevelEnded();
+   public void IntroEnded(object _);
 }
 
 public interface ILevelManager : IManager
