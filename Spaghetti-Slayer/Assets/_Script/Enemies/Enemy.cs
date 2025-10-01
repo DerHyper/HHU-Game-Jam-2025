@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _currentPoints = _maxPoints / 2f;
+        CurrentLevel.EnemyStart(_animator);
     }
 
     private void Update()
