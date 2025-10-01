@@ -6,6 +6,6 @@ public class UIManager : MonoBehaviour, IUIManager
 
     public void UpdateEnemyPointsUI(float currentPoints, float maxPoints)
     {
-        _enemyPointsBarMask.localScale = new Vector3(currentPoints / maxPoints, 1, 1);
+        _enemyPointsBarMask.localScale = new Vector3(Mathf.Clamp01(currentPoints / maxPoints), 1, 1);
     }
 }
