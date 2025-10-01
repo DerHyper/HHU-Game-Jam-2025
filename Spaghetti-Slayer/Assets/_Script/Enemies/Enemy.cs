@@ -8,9 +8,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private readonly float _maxPoints;
+    [SerializeField] private float _maxPoints;
     private float _currentPoints;
-    [SerializeField] private readonly float _pointsPerSecond = 1f;
+    [SerializeField] private float _pointsPerSecond = 1f;
     private const float CLICK_DAMAGE = 1f;
     private bool _isDead = false;
 
