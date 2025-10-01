@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Manages all levels of the game.
 /// </summary>
-public class LevelManager
+public class LevelStageContainer
 {
     private ushort _currentLevel = 0;
 
