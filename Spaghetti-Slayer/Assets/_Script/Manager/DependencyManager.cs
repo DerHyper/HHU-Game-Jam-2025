@@ -45,7 +45,6 @@ public class DependencyManager : MonoBehaviour
 
         cache = new();
 
-
         foreach (var behaviour in dependencies.Where(entry => entry != null)
                 .Select(etnry => etnry.TryGetComponent<MonoBehaviour>(out var behaviour) ? behaviour : null)
                 .Where(behaviour => behaviour != null))
@@ -67,6 +66,10 @@ public class DependencyManager : MonoBehaviour
             result = (T)value;
             return true;
         }
+
+#if DEBUG
+        throw new ArgumentException($"Could not find dependency of type {typeof(T)} with name {nameof(T)}");
+#endif
 
         result = default;
         return false;
