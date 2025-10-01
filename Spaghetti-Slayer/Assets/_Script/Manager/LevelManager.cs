@@ -10,15 +10,15 @@ public class LevelManager : MonoBehaviour, ILevel
     /// The enemy which should be fought in this level.
     /// </summary>
     [Header("Enemy")]
-    [SerializeField] private readonly GameObject _enemy;
-    [SerializeField] private readonly Transform _enemyTransform;
+    [SerializeField] private GameObject _enemy;
+    [SerializeField] private Transform _enemyTransform;
 
     /// <summary>
     /// The fork with which our hero fights the enemy.
     /// </summary>
     [Header("Fork")]
-    [SerializeField] private readonly GameObject _fork;
-    [SerializeField] private readonly Transform _forkTransform;
+    [SerializeField] private GameObject _fork;
+    [SerializeField] private Transform _forkTransform;
 
     public void Start()
     {
