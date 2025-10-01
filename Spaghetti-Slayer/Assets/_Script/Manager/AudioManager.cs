@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviour, IManager
 {
     public static AudioManager Instance;
     [SerializeField] private Transform _sfxParent;
 
     // Music
     [SerializeField] private AudioSource musicPlayer;
-    [SerializeField] private float fadeAmount = 1; 
+    [SerializeField] private float fadeAmount = 1;
     private AudioClip nextMusic;
 
     private float currentMusicTargetVolume;
@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-        private void Start()
+    private void Start()
     {
         pitchTimer = new();
     }
@@ -87,7 +87,7 @@ public class AudioManager : MonoBehaviour
         currentPitch += pitchIncrease;
         pitchTimer.Start();
     }
-    
+
     public void PlayOncePitchedRandom(AudioClip clip, float volume)
     {
         float pitch = Random.Range(stdPitch + randomPitchRange, stdPitch - randomPitchRange);
@@ -111,7 +111,7 @@ public class AudioManager : MonoBehaviour
         float destructionTime = clip.length + 0.1f;
         StartCoroutine(DestroyAudioSource(sfx, destructionTime));
     }
-    
+
     private IEnumerator DestroyAudioSource(GameObject audioSouce, float destructionTime)
     {
         yield return new WaitForSeconds(destructionTime);

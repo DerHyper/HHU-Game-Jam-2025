@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UIManager : MonoBehaviour, IUIManager
+public class UIManager : MonoBehaviour, IUIManager, IManager
 {
     [SerializeField] private Transform _enemyPointsBarMask;
 

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class AnimationManager : IAnimationManager
+public class AnimationManager : IAnimationManager, IManager
 {
     public event Action OutroEnded;
     public event Action IntroEnded;

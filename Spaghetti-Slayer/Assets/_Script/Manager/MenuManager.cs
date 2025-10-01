@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MenuManager : MonoBehaviour
+public class MenuManager : MonoBehaviour, IManager
 {
 
     /// <summary>

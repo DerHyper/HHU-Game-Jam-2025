@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IManager
 {
    #region Managers
    private readonly IAnimationManager _animationManager;
