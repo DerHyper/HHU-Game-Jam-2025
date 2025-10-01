@@ -551,6 +551,7 @@ MonoBehaviour:
   _outroText: []
   _enemy: {fileID: 6172293239551188133, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
   _enemyTransform: {fileID: 121047099}
+  _enemyDeathSprite: {fileID: 0}
   _fork: {fileID: 622165487992504756, guid: 6051497d52a49ed418e58f1895cce06a, type: 3}
   _forkTransform: {fileID: 1393791382}
 --- !u!1 &108826609
@@ -1757,15 +1758,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0033112583
-    y: 0.00729927
-    width: 0.9933775
-    height: 0.98540145
+    x: 0.0016556291
+    y: 0.008583691
+    width: 0.9966887
+    height: 0.98140204
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 0.703125
+  orthographic size: 0.765625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2788,9 +2789,11 @@ MonoBehaviour:
   - "\u2026 Was hast du denn da in der Hand?"
   - WARTE!
   - "Du wirst doch nicht etwa \u2026 !?!"
-  _outroText: []
+  _outroText:
+  - '* weint *'
   _enemy: {fileID: 9145577658379865430, guid: 935742511e23cff4cb3425dab0df7242, type: 3}
   _enemyTransform: {fileID: 121047099}
+  _enemyDeathSprite: {fileID: 21300000, guid: b4979e73243ea0d47a478dd024009504, type: 3}
   _fork: {fileID: 4801133331171318574, guid: 57709c7a33273574ab392cac457ea195, type: 3}
   _forkTransform: {fileID: 1393791382}
 --- !u!1 &1001156477
@@ -3200,10 +3203,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _introText: []
-  _outroText: []
+  _introText:
+  - HA! Was willst du denn?
+  - Du besitzt keine Macht hier, mit deiner Gabel.
+  - ICH BIN EIN PUDDING! * lacht diabolisch *
+  _outroText:
+  - "Das kann nicht sein \u2026"
+  - "Wie hast du \u2026 ? "
+  - "Du hattest nur eine Gabel \u2026 "
+  - "Es sollte nicht m\xF6glich sein."
   _enemy: {fileID: 9145577658379865430, guid: 1f10104cab349ae4ba6427be1137786f, type: 3}
   _enemyTransform: {fileID: 121047099}
+  _enemyDeathSprite: {fileID: 21300000, guid: d4fa72b30cb849840a14f270c2f46ee0, type: 3}
   _fork: {fileID: 4801133331171318574, guid: a610b5f1c2409bc4ea50e93230167fab, type: 3}
   _forkTransform: {fileID: 1393791382}
 --- !u!1 &1196532349
@@ -3992,10 +4003,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _introText: []
-  _outroText: []
+  _introText:
+  - Mist!
+  - 'Warum passiert sowas immer mir? '
+  - "Schicksal, wenn du mich h\xF6ren kannst - das ist deprimierend!"
+  _outroText:
+  - Warte!
+  - Ist es wirklich vorbei?
+  - "Mein Leben war die H\xF6lle."
+  - Danke.
   _enemy: {fileID: 9145577658379865430, guid: 4d05e430cab2f324094a6a7e83281815, type: 3}
   _enemyTransform: {fileID: 121047099}
+  _enemyDeathSprite: {fileID: 21300000, guid: b1044d251c06aa64385facb383fe262e, type: 3}
   _fork: {fileID: 4801133331171318574, guid: eea020687be7c9241a35c78417869dea, type: 3}
   _forkTransform: {fileID: 1393791382}
 --- !u!1 &1792871279
@@ -4547,10 +4566,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _introText: []
-  _outroText: []
+  _introText:
+  - "*lacht h\xF6hnisch*"
+  _outroText:
+  - "Meine B\xE4llchen \u2026"
+  - "Nicht meine B\xE4llchen \u2026"
   _enemy: {fileID: 9145577658379865430, guid: de21188f01b2a6248b1076b716b873fb, type: 3}
   _enemyTransform: {fileID: 121047099}
+  _enemyDeathSprite: {fileID: 21300000, guid: a7627fa250526b84c809a6ef56730995, type: 3}
   _fork: {fileID: 4801133331171318574, guid: 88ed528d1d94f4f4e89d674c0de69a5f, type: 3}
   _forkTransform: {fileID: 1393791382}
 --- !u!1 &2074899476
