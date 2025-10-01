@@ -1,8 +1,15 @@
+using System;
 using UnityEngine;
 
 public interface IGameManager : IManager
 {
+   void GameOver();
+   void LevelEnded();
+}
 
+public interface ILevelManager : IManager
+{
+   ILevel CurrentLevel { get; }
 }
 
 public class GameManager : MonoBehaviour, IGameManager
@@ -10,7 +17,7 @@ public class GameManager : MonoBehaviour, IGameManager
    #region Managers
    private readonly IAnimationManager _animationManager;
    private readonly IUIManager _uiManager;
-   private readonly LevelManager _levelManager;
+   private readonly LevelStageContainer _levelManager;
    #endregion
 
    /// <summary>
@@ -50,6 +57,10 @@ public class GameManager : MonoBehaviour, IGameManager
       _animationManager.StartIntroAnimation();
    }
 
+   /// <summary>
+   /// The currently played level.
+   /// </summary>
+   public ILevel CurrentLevel => _levelManager.CurrentLevel();
 
    /// <summary>
    /// Starts the next level if there is still a level left, otherwise the outro is started which ends the game.
@@ -65,9 +76,12 @@ public class GameManager : MonoBehaviour, IGameManager
       }
 
       ILevel level = _levelManager.NextLevel();
-      level.Start((GameObject go) => Instantiate(go), _animationManager, _uiManager);
-      level.LevelEnded += NextLevel;
+      level.Start(Instantiate);
    }
+
+   public void LevelEnded() => NextLevel();
+
+   public void GameOver() => throw new NotImplementedException();
 
    /// <summary>
    /// Starts the end of the entire game.
