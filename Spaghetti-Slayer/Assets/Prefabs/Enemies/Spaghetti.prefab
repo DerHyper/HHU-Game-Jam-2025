@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 36076626926742743, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
+      propertyPath: _music
+      value: 
+      objectReference: {fileID: 8300000, guid: ead6e0fc97b2e2447bbd1a5ddd9afc46, type: 3}
+    - target: {fileID: 36076626926742743, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
+      propertyPath: _dieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 457262a70723781429d4a402a4128ff5, type: 3}
+    - target: {fileID: 36076626926742743, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
+      propertyPath: _dmgSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d636502e9cd25d4897d78b08a57d03b, type: 3}
     - target: {fileID: 2896192780397868713, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
