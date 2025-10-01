@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +6,8 @@ public interface IGameManager : IManager
 {
    void GameOver();
    void LevelEnded();
-   public void IntroEnded(object _);
+   void IntroEnded(object _);
+   void OutroEnded();
 }
 
 public interface ILevelManager : IManager
@@ -68,6 +68,10 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
    /// </summary>
    /// <param name="_"></param>
    public void IntroEnded(object _) => NextLevel();
+   public void OutroEnded()
+   {
+      Debug.Log("outro");
+   }
 
    /// <summary>
    /// The currently played level.
@@ -79,6 +83,7 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
    /// </summary>
    private void NextLevel()
    {
+      Debug.Log("Next level starting");
       State = GameState.Level;
 
       if (!LevelHasNextLevel())
@@ -93,13 +98,18 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
 
    public void LevelEnded() => NextLevel();
 
-   public void GameOver() => throw new NotImplementedException();
+   public void GameOver()
+   {
+      _animationManager.StartOutroAnimation();
+      Debug.Log("Game is over but not yet implemented");
+   }
 
    /// <summary>
    /// Starts the end of the entire game.
    /// </summary>
    private void Outro()
    {
+      Debug.Log("Victory!");
       State = GameState.Outro;
 
       // Manager needs to know when it is over and got to the next state.

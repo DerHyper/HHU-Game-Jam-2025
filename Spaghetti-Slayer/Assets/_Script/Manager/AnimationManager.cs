@@ -15,7 +15,7 @@ public class AnimationManager : MonoBehaviour, IAnimationManager
 
     public void StartOutroAnimation()
     {
-        _introAnimator.SetTrigger("outro");
+        _outroAnimator.SetTrigger("outro");
     }
 
     public void PlayEnemyDeathAnimation(Animator animator)
