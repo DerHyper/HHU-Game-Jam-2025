@@ -19,11 +19,13 @@ public class LevelManager : MonoBehaviour, ILevel
     [Header("Fork")]
     [SerializeField] private GameObject _fork;
     [SerializeField] private Transform _forkTransform;
+    private GameObject _enemyInstance;
+    private GameObject _forkInstance;
 
-    public void Start()
+    public void Init()
     {
-        GameObject enemyInstance = Instantiate(_enemy, _enemyTransform);
-        GameObject forkInstance = Instantiate(_fork, _forkTransform);
+        _enemyInstance = Instantiate(_enemy, _enemyTransform);
+        _forkInstance = Instantiate(_fork, _forkTransform);
     }
 
     public void EnemyStart(Animator animator)
@@ -42,8 +44,8 @@ public class LevelManager : MonoBehaviour, ILevel
 
     public void EnemyWin(Animator animator)
     {
-        Destroy(_fork);
-        Destroy(_enemy);
+        Destroy(_enemyInstance);
+        Destroy(_forkInstance);
 
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyWinAnimation(animator);
@@ -54,8 +56,8 @@ public class LevelManager : MonoBehaviour, ILevel
 
     public void EnemyDied(Animator animator)
     {
-        Destroy(_fork);
-        Destroy(_enemy);
+        Destroy(_enemyInstance);
+        Destroy(_forkInstance);
 
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyDeathAnimation(animator);
