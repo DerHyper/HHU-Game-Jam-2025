@@ -10,7 +10,7 @@ public class AnimationManager : MonoBehaviour, IAnimationManager
 
     public void StartIntroAnimation()
     {
-        _introAnimator.SetTrigger("intro");
+        //_introAnimator.SetTrigger("intro");
     }
 
     public void StartOutroAnimation()

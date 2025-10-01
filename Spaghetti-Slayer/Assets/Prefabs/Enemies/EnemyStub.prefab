@@ -51,6 +51,8 @@ MonoBehaviour:
   _dmgSound: {fileID: 0}
   _dieSound: {fileID: 0}
   _music: {fileID: 0}
+  _dieSoundVolume: 0.5
+  _dmgSoundVolume: 0.5
   _musicVolume: 0.5
   _pointsPerSecond: 1
 --- !u!1 &8276422220302844933
@@ -79,7 +81,7 @@ Transform:
   m_GameObject: {fileID: 8276422220302844933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.038948104}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
