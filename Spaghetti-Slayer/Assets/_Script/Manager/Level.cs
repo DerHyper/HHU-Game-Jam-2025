@@ -17,13 +17,38 @@ public class Level : ILevel
     [SerializeField]
     private readonly GameObject Fork;
 
-    public void Start(Func<GameObject, GameObject> instantiate, IAnimationManager animationManager, IUIManager uiManager)
+    public void Start(Func<GameObject, GameObject> instantiate)
     {
         GameObject instance = instantiate(Enemy);
-        instance.GetComponent<Enemy>().OnStart += animationManager.PlayEnemyStartAnimation;
-        instance.GetComponent<Enemy>().OnDeath += animationManager.PlayEnemyDeathAnimation;
-        instance.GetComponent<Enemy>().OnWin += animationManager.PlayEnemyDeathAnimation;
-        instance.GetComponent<Enemy>().OnPointsChanged += uiManager.UpdateEnemyPointsUI;
     }
-    public event Action LevelEnded;
+
+    public void EnemyStart(Animator animator)
+    {
+        DependencyManager.TryGet<IAnimationManager>(out var animationManager);
+        animationManager.PlayEnemyStartAnimation(animator);
+    }
+
+    public void EnemyPointsChanged(float currentPoints, float maxPoints)
+    {
+        DependencyManager.TryGet<IUIManager>(out var uIManager);
+        uIManager.UpdateEnemyPointsUI(currentPoints, maxPoints);
+    }
+
+    public void EnemyWin(Animator animator)
+    {
+        DependencyManager.TryGet<IAnimationManager>(out var animationManager);
+        animationManager.PlayEnemyWinAnimation(animator);
+
+        DependencyManager.TryGet<IGameManager>(out var gameManager);
+        gameManager.GameOver();
+    }
+
+    public void EnemyDied(Animator animator)
+    {
+        DependencyManager.TryGet<IAnimationManager>(out var animationManager);
+        animationManager.PlayEnemyDeathAnimation(animator);
+
+        DependencyManager.TryGet<IGameManager>(out var gameManager);
+        gameManager.LevelEnded();
+    }
 }
