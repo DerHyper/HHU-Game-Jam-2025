@@ -15,12 +15,6 @@ public interface IAnimationManager : IManager
     void StartIntroAnimation();
 
     /// <summary>
-    /// Fires when the intro animation ended.
-    /// </summary>
-    event Action IntroEnded;
-
-
-    /// <summary>
     /// Starts the Outro animation of the current scene.
     /// </summary>
     void StartOutroAnimation();
@@ -42,11 +36,6 @@ public interface IAnimationManager : IManager
     /// </summary>
     /// <param name="animator"></param>
     void PlayEnemyWinAnimation(Animator animator);
-
-    /// <summary>
-    /// Fires when the outro animation 
-    /// </summary>
-    event Action OutroEnded;
 }
 
 
