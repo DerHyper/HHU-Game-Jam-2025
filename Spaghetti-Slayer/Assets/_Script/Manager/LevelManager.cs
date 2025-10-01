@@ -4,28 +4,34 @@ using UnityEngine;
 /// <summary>
 /// Encapsulates a level in the game. A level always has a special fork and an enemy to fight associated with it.
 /// </summary>
-public class Level : ILevel
+public class LevelManager : MonoBehaviour, ILevel
 {
     /// <summary>
     /// The enemy which should be fought in this level.
     /// </summary>
-    [SerializeField]
-    private readonly GameObject Enemy;
+    [Header("Enemy")]
+    [SerializeField] private readonly GameObject _enemy;
+    [SerializeField] private readonly Transform _enemyTransform;
+
     /// <summary>
     /// The fork with which our hero fights the enemy.
     /// </summary>
-    [SerializeField]
-    private readonly GameObject Fork;
+    [Header("Fork")]
+    [SerializeField] private readonly GameObject _fork;
+    [SerializeField] private readonly Transform _forkTransform;
 
-    public void Start(Func<GameObject, GameObject> instantiate)
+    public void Start()
     {
-        GameObject instance = instantiate(Enemy);
+        GameObject enemyInstance = Instantiate(_enemy, _enemyTransform);
+        GameObject forkInstance = Instantiate(_fork, _forkTransform);
     }
 
     public void EnemyStart(Animator animator)
     {
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyStartAnimation(animator);
+
+
     }
 
     public void EnemyPointsChanged(float currentPoints, float maxPoints)
@@ -36,6 +42,9 @@ public class Level : ILevel
 
     public void EnemyWin(Animator animator)
     {
+        Destroy(_fork);
+        Destroy(_enemy);
+
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyWinAnimation(animator);
 
@@ -45,6 +54,9 @@ public class Level : ILevel
 
     public void EnemyDied(Animator animator)
     {
+        Destroy(_fork);
+        Destroy(_enemy);
+
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyDeathAnimation(animator);
 

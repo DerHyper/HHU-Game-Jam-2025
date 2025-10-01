@@ -9,7 +9,7 @@ public interface ILevel : IEnemyLevelEvents
     /// <summary>
     /// Starts the current level.
     /// </summary>
-    void Start(Func<GameObject, GameObject> instantiate);
+    void Start();
 }
 
 /// <summary>
