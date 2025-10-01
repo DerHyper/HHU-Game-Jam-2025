@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public interface IUIManager
+public interface IUIManager : IManager
 {
     /// <summary>
     /// Updates the enemy points UI.

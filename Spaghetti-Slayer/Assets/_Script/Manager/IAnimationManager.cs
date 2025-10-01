@@ -7,7 +7,7 @@ using UnityEngine;
 /// The Fight stage, in which the enemy is fought.
 /// The Outro stage, in which an outro of the enemy is played.
 /// </summary>
-public interface IAnimationManager
+public interface IAnimationManager : IManager
 {
     /// <summary>
     /// Starts the intro animation of the game.

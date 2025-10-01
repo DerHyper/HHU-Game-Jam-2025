@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
-using UnityEngine.Playables;
 
-public class AnimationManager : IAnimationManager, IManager
+public class AnimationManager : MonoBehaviour, IAnimationManager
 {
     public event Action OutroEnded;
     public event Action IntroEnded;
