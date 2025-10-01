@@ -30,7 +30,10 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
    /// Current state of the game.
    /// </summary>
    public GameState State { get; private set; } = GameState.UnStarted;
-
+   [SerializeField] private AudioClip _introMusic;
+   [SerializeField] private float _introMusicVolume = 0.5f;
+   [SerializeField] private AudioClip _outroMusic;
+   [SerializeField] private float _outroMusicVolume = 0.5f;
 
    #region Singleton
    public static GameManager Instance;
@@ -56,10 +59,7 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
    void Start()
    {
       State = GameState.Intro;
-
-      // Intro seq in start method
-      // Animation manager start anmiation
-      _animationManager.StartIntroAnimation();
+      Intro();
    }
 
    /// <summary>
@@ -105,6 +105,17 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
    }
 
    /// <summary>
+   /// Starts the intro of the game.
+   /// </summary>
+   private void Intro()
+   {
+      // Animation manager start anmiation
+      _animationManager.StartIntroAnimation();
+      AudioManager.Instance.PlayMusic(_introMusic, _introMusicVolume);
+
+   }
+
+   /// <summary>
    /// Starts the end of the entire game.
    /// </summary>
    private void Outro()
@@ -115,6 +126,7 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
       // Manager needs to know when it is over and got to the next state.
       // GameState that can be accessed from outside
       _animationManager.StartOutroAnimation();
+      AudioManager.Instance.PlayMusic(_outroMusic, _outroMusicVolume);
    }
 
 
