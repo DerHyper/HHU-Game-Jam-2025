@@ -52,19 +52,21 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
    /// Is called on initialization.
    /// Starts the Intro and registers a callback to start a level, for when the intro is finished.
    /// </summary>
-   IEnumerator Start()
+   void Start()
    {
       State = GameState.Intro;
 
       // Intro seq in start method
       // Animation manager start anmiation
-      // var iter = _animationManager.StartIntroAnimation();
-      // while (iter.MoveNext()) { yield return null; }
-      // yield return null;
-
-      NextLevel();
-      yield break;
+      _animationManager.StartIntroAnimation();
    }
+
+   /// <summary>
+   /// Should subscribe to the event when the intro ended.
+   /// https://docs.unity3d.com/6000.0/Documentation/Manual/script-AnimationWindowEvent.html
+   /// </summary>
+   /// <param name="_"></param>
+   public void IntroEnded(object _) => NextLevel();
 
    /// <summary>
    /// The currently played level.
