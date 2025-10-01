@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
         AddPoints(_pointsPerSecond * Time.deltaTime);
         if (_currentPoints >= _maxPoints)
         {
+            _isDead = true;
             Win();
         }
     }
