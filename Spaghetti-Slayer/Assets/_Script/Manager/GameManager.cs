@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public interface IGameManager : IManager
 {
@@ -8,6 +9,7 @@ public interface IGameManager : IManager
    void LevelEnded();
    void IntroEnded(object _);
    void OutroEnded();
+   void GameOverEnded();
 }
 
 public interface ILevelManager : IManager
@@ -73,6 +75,12 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
       Debug.Log("outro");
    }
 
+   public void GameOverEnded()
+   {
+      // Restart the scene
+      SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+   }
+
    /// <summary>
    /// The currently played level.
    /// </summary>
@@ -134,7 +142,7 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
    /// Manages all levels of the game.
    /// </summary>
    #region LevelContainer 
-   private static short _currentLevel = -1;
+   private short _currentLevel = -1;
 
    /// <summary>
    /// Checks wether there is still a level to play.

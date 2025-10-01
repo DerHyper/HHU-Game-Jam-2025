@@ -19,6 +19,10 @@ public interface IAnimationManager : IManager
     /// </summary>
     void StartOutroAnimation();
 
+    /// <summary>
+    /// Starts the GameOver animation of the current scene.
+    /// </summary>
+    void StartGameOverAnimation();
 
     void PlayEnemyFightAnimation(Animator animator);
 

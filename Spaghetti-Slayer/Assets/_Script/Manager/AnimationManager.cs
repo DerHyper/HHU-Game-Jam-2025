@@ -6,6 +6,7 @@ public class AnimationManager : MonoBehaviour, IAnimationManager
 
     [SerializeField] private Animator _introAnimator;
     [SerializeField] private Animator _outroAnimator;
+    [SerializeField] private Animator _gameOverAnimator;
 
 
     public void StartIntroAnimation()
@@ -16,6 +17,11 @@ public class AnimationManager : MonoBehaviour, IAnimationManager
     public void StartOutroAnimation()
     {
         _outroAnimator.SetTrigger("outro");
+    }
+
+    public void StartGameOverAnimation()
+    {
+        _gameOverAnimator.SetTrigger("gameover");
     }
 
     public void PlayEnemyFightAnimation(Animator animator)
