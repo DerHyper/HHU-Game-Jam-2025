@@ -11,17 +11,16 @@ using UnityEngine;
 public interface IManager { }
 
 /// <summary>
-/// The dependency service will manage all our dependencies using a list to register
+/// The dependency manager will manage all our dependencies using a list to register
 /// Managers under their interfaces and then retrieving them over a single static method.
 /// 
 /// The object itself will be used as a singleton but access is managed via a single public static method to retrieve any
 /// registered manager interface.
 /// </summary>
-[CreateAssetMenu(fileName = "DependencyManager", menuName = "Systems/Dependency Manager")]
-public class DependencyService : ScriptableObject
+public class DependencyManager : MonoBehaviour
 {
     #region Singleton
-    private static DependencyService Instance { get; set; }
+    private static DependencyManager Instance;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -35,32 +34,28 @@ public class DependencyService : ScriptableObject
     }
     #endregion
 
-
-    [Serializable]
-    private struct DependencyEntry
-    {
-        public UnityEngine.Object implementation;
-    }
-
-    [SerializeField] private List<DependencyEntry> dependencies = new();
+    [SerializeField] private List<GameObject> dependencies = new();
 
     private Dictionary<Type, object> cache;
 
     public void Start() => Init();
-
     private void Init()
     {
-        cache = new();
-        foreach (var entry in dependencies)
-        {
-            if (entry.implementation == null) { continue; }
+        if (cache != null) { return; }
 
-            foreach (var iface in entry.implementation.GetType()
-                                       .GetInterfaces()
-                                       .Where(type => type != typeof(IManager))
-                                       .Where(type => !cache.ContainsKey(type)))
+        cache = new();
+
+
+        foreach (var behaviour in dependencies.Where(entry => entry != null)
+                .Select(etnry => etnry.TryGetComponent<MonoBehaviour>(out var behaviour) ? behaviour : null)
+                .Where(behaviour => behaviour != null))
+        {
+            foreach (var iface in behaviour.GetType()
+                .GetInterfaces()
+                .Where(type => type != typeof(IManager))
+                .Where(type => !cache.ContainsKey(type)))
             {
-                cache[iface] = entry.implementation;
+                cache[iface] = behaviour;
             }
         }
     }
