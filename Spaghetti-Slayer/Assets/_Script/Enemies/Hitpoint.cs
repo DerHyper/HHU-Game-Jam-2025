@@ -7,5 +7,7 @@ public class Hitpoint : MonoBehaviour
     {
         Debug.Log("Hit");
         gameObject.transform.parent.GetComponent<Enemy>().TakeDamage();
+        DependencyManager.TryGet<ILevelManager>(out var levelManager);
+        levelManager.CurrentLevel.MoveFork();
     }
 }

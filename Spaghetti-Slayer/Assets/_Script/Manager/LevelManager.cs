@@ -65,4 +65,10 @@ public class LevelManager : MonoBehaviour, ILevel
         DependencyManager.TryGet<IGameManager>(out var gameManager);
         gameManager.LevelEnded();
     }
+
+    public void MoveFork()
+    {
+        DependencyManager.TryGet<IAnimationManager>(out var animationManager);
+        animationManager.HitFork(_forkInstance.GetComponent<Animator>());
+    }
 }

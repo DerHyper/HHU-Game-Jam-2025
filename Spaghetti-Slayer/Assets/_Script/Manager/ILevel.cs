@@ -38,4 +38,8 @@ public interface IEnemyLevelEvents
     /// </summary>
     /// <param name="enemyAnimator">The enemy animator.</param>
     void EnemyDied(Animator animator);
+    /// <summary>
+    /// Moves the fork to hit the enemy.
+    /// </summary>
+    public void MoveFork();
 }
