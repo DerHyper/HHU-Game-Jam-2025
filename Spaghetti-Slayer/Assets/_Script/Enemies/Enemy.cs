@@ -7,12 +7,6 @@ using UnityEngine;
 /// </summary>
 public class Enemy : MonoBehaviour
 {
-    /// <summary>Is called before the enemy object is destroyed.</summary>
-    public event Action<Animator> OnDeath;
-    public event Action<Animator> OnStart;
-    /// <summary> Is called when the enemy wins. </summary>
-    public event Action<Animator> OnWin;
-    public event Action<float, float> OnPointsChanged;
     [SerializeField] private Animator _animator;
     [SerializeField] private readonly float _maxPoints;
     private float _currentPoints;
@@ -40,7 +34,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void Win()
     {
-        OnWin?.Invoke(_animator);
+        CurrentLevel.EnemyWin(_animator);
     }
 
     /// <summary>
@@ -60,7 +54,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void Die()
     {
-        OnDeath?.Invoke(_animator);
+        CurrentLevel.EnemyDied(_animator);
         _isDead = true;
     }
 
@@ -72,7 +66,7 @@ public class Enemy : MonoBehaviour
     {
         _currentPoints += points;
         _currentPoints = Mathf.Clamp(_currentPoints, 0, _maxPoints);
-        OnPointsChanged?.Invoke(_currentPoints, _maxPoints);
+        CurrentLevel.EnemyPointsChanged(_currentPoints, _maxPoints);
     }
 
     /// <summary>
@@ -83,4 +77,6 @@ public class Enemy : MonoBehaviour
     {
         return _currentPoints / _maxPoints;
     }
+
+    private ILevel CurrentLevel => DependencyManager.TryGet<ILevelManager>(out var gameManager) ? gameManager.CurrentLevel : null;
 }
