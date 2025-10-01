@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour, IGameManager
       }
 
       ILevel level = _levelContainer.NextLevel();
-      level.Start(Instantiate);
+      level.Start();
    }
 
    public void LevelEnded() => NextLevel();
