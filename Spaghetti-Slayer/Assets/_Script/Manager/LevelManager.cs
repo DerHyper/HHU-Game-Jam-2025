@@ -7,12 +7,17 @@ using UnityEngine;
 /// </summary>
 public class LevelManager : MonoBehaviour, ILevel
 {
+    [Header("Intro"), SerializeField] private string[] _introText;
+
+    [Header("Outro"), SerializeField] private string[] _outroText;
+
     /// <summary>
     /// The enemy which should be fought in this level.
     /// </summary>
     [Header("Enemy")]
     [SerializeField] private GameObject _enemy;
     [SerializeField] private Transform _enemyTransform;
+    [SerializeField] private Sprite _enemyDeathSprite;
 
     /// <summary>
     /// The fork with which our hero fights the enemy.
@@ -20,6 +25,7 @@ public class LevelManager : MonoBehaviour, ILevel
     [Header("Fork")]
     [SerializeField] private GameObject _fork;
     [SerializeField] private Transform _forkTransform;
+
     private GameObject _enemyInstance;
     private GameObject _forkInstance;
 
@@ -32,10 +38,13 @@ public class LevelManager : MonoBehaviour, ILevel
 
     public void EnemyStart(Animator animator)
     {
+        InactiveEnemy();
+
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyStartAnimation(animator);
 
-        DeactivateEnemy();
+        DependencyManager.TryGet<ISpeachManager>(out var speachManager);
+        speachManager.QueueText(_introText, OnLevelIntroEnded);
     }
 
 
@@ -67,8 +76,15 @@ public class LevelManager : MonoBehaviour, ILevel
 
     public void EnemyDied(Animator animator)
     {
+        InactiveEnemy();
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
         animationManager.PlayEnemyDeathAnimation(animator);
+
+        SpriteRenderer spriteRenderer = animator.GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.sprite = _enemyDeathSprite;
+
+        DependencyManager.TryGet<ISpeachManager>(out var speachManager);
+        speachManager.QueueText(_outroText, OnEnemyDiedAnimationEnded);
     }
 
     public void OnEnemyDiedAnimationEnded()
@@ -80,9 +96,9 @@ public class LevelManager : MonoBehaviour, ILevel
         Destroy(_forkInstance);
     }
 
-    private void DeactivateEnemy()
+    private void InactiveEnemy()
     {
-        _enemyInstance.GetComponent<Enemy>().Intro();
+        _enemyInstance.GetComponent<Enemy>().Inactive();
     }
 
     private void EnemyFight()

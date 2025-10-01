@@ -101,7 +101,7 @@ public class Enemy : MonoBehaviour
         gameObject.GetComponentInChildren<Hitpoint>(true).Activate();
     }
 
-    public void Intro()
+    public void Inactive()
     {
         _isActive = false;
         gameObject.GetComponentInChildren<Hitpoint>(true).Deactivate();

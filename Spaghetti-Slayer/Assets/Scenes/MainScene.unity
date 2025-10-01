@@ -145,6 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 12438371}
+  - component: {fileID: 12438372}
   m_Layer: 5
   m_Name: Speach
   m_TagString: Untagged
@@ -173,6 +174,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &12438372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12438370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facd75779214d4e4fbb92d40fd42aec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &14468135
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _introText: []
+  _outroText: []
   _enemy: {fileID: 6172293239551188133, guid: 189f59b1ef22be7418b066427a0298d7, type: 3}
   _enemyTransform: {fileID: 121047099}
   _fork: {fileID: 622165487992504756, guid: 6051497d52a49ed418e58f1895cce06a, type: 3}
@@ -1103,6 +1118,7 @@ MonoBehaviour:
   - {fileID: 1190656154}
   - {fileID: 1724167145}
   - {fileID: 2060903332}
+  - {fileID: 12438370}
 --- !u!1 &225002605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,10 +1757,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.0033112583
+    y: 0.00729927
+    width: 0.9933775
+    height: 0.98540145
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -2766,6 +2782,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _introText:
+  - Oh hey!
+  - "Was ist gerade passiert?* g\xE4hnt * Gerade habe ich noch geschlafen. "
+  - "\u2026 Was hast du denn da in der Hand?"
+  - WARTE!
+  - "Du wirst doch nicht etwa \u2026 !?!"
+  _outroText: []
   _enemy: {fileID: 9145577658379865430, guid: 935742511e23cff4cb3425dab0df7242, type: 3}
   _enemyTransform: {fileID: 121047099}
   _fork: {fileID: 4801133331171318574, guid: 57709c7a33273574ab392cac457ea195, type: 3}
@@ -2990,6 +3013,7 @@ MonoBehaviour:
   - {fileID: 222285467}
   - {fileID: 449570501}
   - {fileID: 858629691}
+  - {fileID: 12438370}
 --- !u!1 &1023890621
 GameObject:
   m_ObjectHideFlags: 0
@@ -3176,6 +3200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _introText: []
+  _outroText: []
   _enemy: {fileID: 9145577658379865430, guid: 1f10104cab349ae4ba6427be1137786f, type: 3}
   _enemyTransform: {fileID: 121047099}
   _fork: {fileID: 4801133331171318574, guid: a610b5f1c2409bc4ea50e93230167fab, type: 3}
@@ -3785,7 +3811,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663363317}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3966,6 +3992,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _introText: []
+  _outroText: []
   _enemy: {fileID: 9145577658379865430, guid: 4d05e430cab2f324094a6a7e83281815, type: 3}
   _enemyTransform: {fileID: 121047099}
   _fork: {fileID: 4801133331171318574, guid: eea020687be7c9241a35c78417869dea, type: 3}
@@ -4519,6 +4547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d872d0064ed53bc469d50f938d4553aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _introText: []
+  _outroText: []
   _enemy: {fileID: 9145577658379865430, guid: de21188f01b2a6248b1076b716b873fb, type: 3}
   _enemyTransform: {fileID: 121047099}
   _fork: {fileID: 4801133331171318574, guid: 88ed528d1d94f4f4e89d674c0de69a5f, type: 3}
