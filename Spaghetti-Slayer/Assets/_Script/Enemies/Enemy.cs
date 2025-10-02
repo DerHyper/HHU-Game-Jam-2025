@@ -47,8 +47,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void Win()
     {
-        DependencyManager.TryGet<IAnimationManager>(out var animationManager);
-        animationManager.StartGameOverAnimation();
+        CurrentLevel.EnemyWin(_enemyAnimator);
     }
 
     /// <summary>
