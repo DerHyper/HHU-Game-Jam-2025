@@ -72,7 +72,8 @@ public class GameManager : MonoBehaviour, IGameManager, ILevelManager
    public void IntroEnded(object _) => NextLevel();
    public void OutroEnded()
    {
-      Debug.Log("outro");
+      DependencyManager.TryGet<IUIManager>(out var uiManager);
+      uiManager.OpenCredits();
    }
 
    public void GameOverEnded()

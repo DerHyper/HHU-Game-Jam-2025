@@ -3498,7 +3498,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 952912768090229751, guid: afb386e0874332c4fae3ea5690fe33cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 955817634}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3536975264824024219, guid: afb386e0874332c4fae3ea5690fe33cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1677909111}
   m_SourcePrefab: {fileID: 100100000, guid: afb386e0874332c4fae3ea5690fe33cf, type: 3}
 --- !u!4 &1531622656 stripped
 Transform:
@@ -3581,6 +3584,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663363317}
   m_CullTransparentMesh: 1
+--- !u!1 &1677909108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3536975264824024219, guid: afb386e0874332c4fae3ea5690fe33cf, type: 3}
+  m_PrefabInstance: {fileID: 1531622655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1677909111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677909108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49359c7442d8c4344a7c26d59126ec71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1792871279
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,6 +4184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPointsBarMask: {fileID: 963445710}
+  _creditsMenu: {fileID: 208546616}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

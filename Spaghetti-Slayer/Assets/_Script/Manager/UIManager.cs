@@ -3,6 +3,15 @@ using UnityEngine;
 public class UIManager : MonoBehaviour, IUIManager
 {
     [SerializeField] private Transform _enemyPointsBarMask;
+    [SerializeField] private GameObject _creditsMenu;
+
+    public void OpenCredits()
+    {
+        if (!_creditsMenu.activeSelf)
+        {
+            _creditsMenu.SetActive(true);
+        }
+    }
 
     public void UpdateEnemyPointsUI(float currentPoints, float maxPoints)
     {
