@@ -61,8 +61,9 @@ public class LevelManager : MonoBehaviour, ILevel
 
     public void EnemyWin(Animator animator)
     {
+        InactiveEnemy();
         DependencyManager.TryGet<IAnimationManager>(out var animationManager);
-        animationManager.PlayEnemyWinAnimation(animator);
+        animationManager.StartGameOverAnimation();
     }
 
     public void OnEnemyWinAnimationEnded()
