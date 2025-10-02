@@ -29,3 +29,27 @@ YES!
     <img src="./img/its_an_olive.png" width=600 style="padding:20px;"/>
     <img src="./img/Any_resemblance_to_famous_persons_is_purely_coincidental.png" width=600 style="padding:20px;"/>
 </div>
+
+## Credits
+
+[Mouse Imitation](https://opengameart.org/content/mouse-imitation) by [AntumDeluge](https://opengameart.org/users/antumdeluge)
+
+[Death Sounds](https://opengameart.org/content/death-sounds) by [Macro](https://opengameart.org/users/macro)
+
+[Slime Monster](https://opengameart.org/content/slime-monster) by [qubodup](https://opengameart.org/users/qubodup)
+
+[Evil Laugh 2](https://opengameart.org/content/evil-laugh-2) by [AntumDeluge](https://opengameart.org/users/antumdeluge)
+
+[tmp](https://opengameart.org/content/tmp) by [Écrivain](https://opengameart.org/users/%C3%A9crivain)
+
+[80 CC0 creature SFX](https://opengameart.org/content/80-cc0-creature-sfx) by [rubberduck](https://opengameart.org/users/rubberduck)
+
+[Orchestra Loop](https://opengameart.org/content/orchestra-loop) by [Brandon Morris](https://opengameart.org/users/haeldb)
+
+[Repetitive mixed style track](https://opengameart.org/content/repetitive-mixed-style-track) by [EMR](https://opengameart.org/users/emr)
+
+[Breves dies hominis](https://opengameart.org/content/breves-dies-hominis) by [Magdalen Kadel](https://opengameart.org/users/ceninan)
+
+[Determination](https://opengameart.org/content/determination) by [artisticdude](https://opengameart.org/users/artisticdude)
+
+[Forklift](https://pngtree.com/freepng/forklift-truck-isolated_13357526.html) by [pngtree](https://pngtree.com)
