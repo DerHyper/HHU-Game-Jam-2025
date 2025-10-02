@@ -23,14 +23,22 @@ YES!
 ## Preview 
 
 <div style="text-align: center; ">
-    <img src="./img/the_darkness.png" width=600 style="padding:20px;"/>
-    <img src="./img/never_surrender.png" width=600 style="padding:20px;"/>
-    <img src="./img/grab_your_weapon.png" width=600 style="padding:20px;"/>
-    <img src="./img/its_an_olive.png" width=600 style="padding:20px;"/>
-    <img src="./img/Any_resemblance_to_famous_persons_is_purely_coincidental.png" width=600 style="padding:20px;"/>
+    <img src="./img/the_darkness.png" width=500 style="padding:20px;"/>
+    <img src="./img/never_surrender.png" width=500 style="padding:20px;"/>
+    <img src="./img/grab_your_weapon.png" width=500 style="padding:20px;"/>
+    <img src="./img/its_an_olive.png" width=500 style="padding:20px;"/>
+    <img src="./img/Any_resemblance_to_famous_persons_is_purely_coincidental.png" width=500 style="padding:20px;"/>
 </div>
 
 ## Credits
+
+**Team Honda Civic:**
+[Jannik](https://github.com/jaess-dev), 
+[Kuro](https://github.com/KuroNT), 
+[Stephi](https://github.com/Stephi287) 
+& [Max](https://github.com/DerHyper)
+
+### Additional Credits
 
 [Mouse Imitation](https://opengameart.org/content/mouse-imitation) by [AntumDeluge](https://opengameart.org/users/antumdeluge)
 
