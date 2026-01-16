@@ -1,6 +1,7 @@
 # HHU-Game-Jam-2025
 
-Our entry for the [HHU-Game-Jam 2025](https://www.cs.hhu.de/lehrstuehle-und-arbeitsgruppen/softwaretechnik-und-programmiersprachen/lehre-und-abschlussarbeiten/game-jam)
+This is our entry for the [HHU-Game-Jam 2025](https://www.cs.hhu.de/lehrstuehle-und-arbeitsgruppen/softwaretechnik-und-programmiersprachen/lehre-und-abschlussarbeiten/game-jam).\
+Play the game [here](https://hyperstudiosde.itch.io/spaghetti-slayer)!
 
 ## Story
 
